@@ -1,5 +1,4 @@
-{% set version = "0.2.2" %}
-
+{% set version = '0.2.2' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +9,12 @@ package:
 source:
   fn: Cubist_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/Cubist_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/Cubist/Cubist_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Cubist_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/Cubist/Cubist_{{ version }}.tar.gz
   sha256: cd3e152cc72ab33f720a8fb6b8b6787171e1c037cfda48f1735ab692ed6d85d4
 
 build:
+  merge_build_host: True  # [win]
   number: 0
   skip: true  # [win32]
   rpaths:
@@ -23,22 +23,31 @@ build:
 
 requirements:
   build:
+    - {{ compiler('c') }}        # [not win]
+    - {{native}}toolchain        # [win]
+    - {{posix}}filesystem        # [win]
+    - {{posix}}sed               # [win]
+    - {{posix}}grep              # [win]
+    - {{posix}}autoconf
+    - {{posix}}automake-wrapper  # [win]
+    - {{posix}}automake          # [win]
+    - {{posix}}pkg-config
+    - {{posix}}make
+    - {{posix}}sed  # [win]
+    - {{posix}}coreutils  # [win]
+  host:
     - r-base
     - r-lattice
     - r-reshape2
-    - posix                # [win]
-    - {{native}}toolchain  # [win]
-    - gcc                  # [not win]
-
   run:
     - r-base
+    - {{native}}gcc-libs         # [win]
     - r-lattice
     - r-reshape2
-    - libgcc  # [not win]
 
 test:
   commands:
-    - $R -e "library('Cubist')"  # [not win]
+    - $R -e "library('Cubist')"           # [not win]
     - "\"%R%\" -e \"library('Cubist')\""  # [win]
 
 about:
@@ -51,8 +60,8 @@ about:
 
 extra:
   recipe-maintainers:
-    - cbrueffer
     - johanneskoester
     - bgruening
     - daler
     - jdblischak
+    - cbrueffer
