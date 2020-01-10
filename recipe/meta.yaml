@@ -1,4 +1,4 @@
-{% set version = "0.2.3" %}
+{% set version = '0.2.3' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -7,7 +7,6 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: Cubist_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/Cubist_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/Cubist/Cubist_{{ version }}.tar.gz
@@ -16,24 +15,24 @@ source:
 build:
   merge_build_host: True  # [win]
   number: 0
-  skip: true  # [win32]
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - {{ compiler('c') }}        # [not win]
+    - {{ compiler('c') }}              # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
     - {{posix}}filesystem        # [win]
     - {{posix}}sed               # [win]
     - {{posix}}grep              # [win]
     - {{posix}}autoconf
+    - {{posix}}automake          # [not win]
     - {{posix}}automake-wrapper  # [win]
     - {{posix}}pkg-config
     - {{posix}}make
-    - {{posix}}sed  # [win]
-    - {{posix}}coreutils  # [win]
+    - {{posix}}coreutils         # [win]
+    - {{posix}}zip               # [win]
   host:
     - r-base
     - r-lattice
@@ -54,13 +53,32 @@ about:
   license: GPL-3
   summary: Regression modeling using rules with added instance-based corrections.
   license_family: GPL3
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+  license_file:
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
 
 extra:
   recipe-maintainers:
     - conda-forge/r
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
-    - cbrueffer
+
+# Package: Cubist
+# Type: Package
+# Title: Rule- And Instance-Based Regression Modeling
+# Version: 0.2.3
+# Authors@R: c( person("Max", "Kuhn", , "mxkuhn@gmail.com", c("aut", "cre")), person("Steve", "Weston", role = "ctb"), person("Chris", "Keefer", role = "ctb"), person("Nathan", "Coulter", role = "ctb"), person("Ross", "Quinlan", role = "aut", comment = "Author of imported C code"), person("Rulequest Research Pty Ltd.", role = "cph", comment = "Copyright holder of imported C code"))
+# Maintainer: Max Kuhn <mxkuhn@gmail.com>
+# Description: Regression modeling using rules with added instance-based corrections.
+# Depends: lattice
+# Imports: reshape2, utils
+# Suggests: mlbench, caret, knitr, modeldata, dplyr (>= 0.7.4), rlang, tidyrules
+# URL: https://topepo.github.io/Cubist
+# BugReports: https://github.com/topepo/Cubist/issues
+# License: GPL-3
+# LazyLoad: yes
+# RoxygenNote: 7.0.2.9000
+# VignetteBuilder: knitr
+# Encoding: UTF-8
+# NeedsCompilation: yes
+# Packaged: 2020-01-09 19:49:52 UTC; max
+# Author: Max Kuhn [aut, cre], Steve Weston [ctb], Chris Keefer [ctb], Nathan Coulter [ctb], Ross Quinlan [aut] (Author of imported C code), Rulequest Research Pty Ltd. [cph] (Copyright holder of imported C code)
+# Repository: CRAN
+# Date/Publication: 2020-01-10 17:50:23 UTC
