@@ -1,4 +1,4 @@
-{% set version = '0.2.3' %}
+{% set version = "0.2.40" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/Cubist_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/Cubist/Cubist_{{ version }}.tar.gz
-  sha256: 19845f585e073f316bb4bdf74b28a624e839561faeedd40ef5548960c5b1e1f4
+  sha256: 37b85dd7c084fc82a0af5d6b46b674fa1e5509bfb36ffc9704156d3139ea4012
 
 build:
-  merge_build_host: True  # [win]
-  number: 1
+  merge_build_host: true  # [win]
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -54,7 +54,7 @@ about:
   summary: Regression modeling using rules with added instance-based corrections.
   license_family: GPL3
   license_file:
-    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
   recipe-maintainers:
