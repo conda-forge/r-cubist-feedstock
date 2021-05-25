@@ -50,7 +50,7 @@ test:
 
 about:
   home: https://topepo.github.io/Cubist
-  license: GPL-3
+  license: GPL-3.0-only
   summary: Regression modeling using rules with added instance-based corrections.
   license_family: GPL3
   license_file:
