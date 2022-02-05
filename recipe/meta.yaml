@@ -1,4 +1,4 @@
-{% set version = "0.3.0" %}
+{% set version = "0.4.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/Cubist_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/Cubist/Cubist_{{ version }}.tar.gz
-  sha256: 88a76e7f858a8e978a73a97ce6a3504201d889517b39ce862cef734dcf9eb263
+  sha256: 3a1f74d44300e3a38a10e3693fc019cfcca221d62d7c416abebb20811e965578
 
 build:
   merge_build_host: true  # [win]
