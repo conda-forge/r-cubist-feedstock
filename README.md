@@ -1,11 +1,22 @@
+About r-cubist-feedstock
+========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-cubist-feedstock/blob/main/LICENSE.txt)
+
 About r-cubist
-==============
+--------------
 
 Home: https://topepo.github.io/Cubist
 
 Package license: GPL-3.0-only
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-cubist-feedstock/blob/main/LICENSE.txt)
+Summary: Regression modeling using rules with added instance-based corrections.
+About r-cubist
+--------------
+
+Home: https://topepo.github.io/Cubist
+
+Package license: GPL-3.0-only
 
 Summary: Regression modeling using rules with added instance-based corrections.
 
