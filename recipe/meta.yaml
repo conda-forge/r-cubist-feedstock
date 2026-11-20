@@ -1,4 +1,4 @@
-{% set version = "0.6.0" %}
+{% set version = "1.0.0" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,7 +9,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/Cubist_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/Cubist/Cubist_{{ version }}.tar.gz
-  sha256: 7a09e5f4bde4c60ea5d856ad39260a472dd696eda4d8a9b8f5a25d4fa5cfb836
+  sha256: ab2878a86ec633707488a092338ac11b13278192fec54dd4a4a28ceab4f2399b
 
 build:
   number: 0
